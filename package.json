@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/index.js",
     "build": "tsc --outDir build -p src",
-	 "push": "ts-node src/push.ts",
+    "push": "ts-node src/push.ts",
     "watch": "tsc --outDir build -p src -w",
     "test": "mocha -r ts-node/register \"tests/**/*.spec.ts\""
   },
@@ -21,8 +21,7 @@
     "dotenv": "^16.0.0",
     "inversify": "^6.0.1",
     "node-fetch": "^2.6.7",
-    "reflect-metadata": "^0.1.13",
-    "typescript": "^4.6.3"
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@types/chai": "^4.3.1",
@@ -30,6 +29,7 @@
     "chai": "^4.3.6",
     "mocha": "^9.2.2",
     "ts-mockito": "^2.6.1",
-    "ts-node": "^10.7.0"
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
   }
 }
