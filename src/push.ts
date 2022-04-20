@@ -10,7 +10,7 @@ const clientId = process.env["CLIENT_ID"];
 const guildId = process.env["GUILD_ID"];
 
 const commands = [];
-const commandFiles = readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     const { command } : { command: SlashCommandBuilder } = require(`./commands/${file}`);
