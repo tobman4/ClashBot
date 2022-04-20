@@ -1,6 +1,6 @@
 ./src/*.js
 ./src/*js.map
-build
-node_module
-.env
+./build
+./node_module/
+./.env
 */config.json
