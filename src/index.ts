@@ -2,6 +2,8 @@ import { Client, Intents } from 'discord.js';
 import { token } from './config.json';
 import { readdirSync } from 'fs';
 
+import "dotenv/config";
+
 import { GetTournaments } from './Riot/api';
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });

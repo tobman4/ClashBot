@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node build/index.js",
     "build": "tsc --outDir build -p src",
     "push": "ts-node src/push.ts",
     "watch": "tsc --outDir build -p src -w",

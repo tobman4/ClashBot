@@ -3,12 +3,14 @@ import { Routes } from 'discord-api-types/v9';
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { readdirSync } from 'fs';
 
-import { token,clientId,guildId } from "./config.json"
+import "dotenv/config";
 
-console.log(token,clientId,guildId);
+const token = process.env["DISC_KEY"];
+const clientId = process.env["CLIENT_ID"];
+const guildId = process.env["GUILD_ID"];
 
 const commands = [];
-const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
+const commandFiles = readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
     const { command } : { command: SlashCommandBuilder } = require(`./commands/${file}`);
