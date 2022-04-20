@@ -1,5 +1,4 @@
 import { Client, Intents } from 'discord.js';
-import { token } from './config.json';
 import { readdirSync } from 'fs';
 
 import "dotenv/config";
