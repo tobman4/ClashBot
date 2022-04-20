@@ -32,4 +32,8 @@ if(!process.env["RIOT_KEY"]) {
     throw Error("Missing RIOT_KEY en");
 }
 
-client.login(token);
+if(!process.env["DISC_KEY"]) {
+    throw Error("Missing DISC_KEY");
+}
+
+client.login(process.env["DISC_KEY"]);
