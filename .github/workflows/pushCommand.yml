@@ -12,10 +12,3 @@ jobs:
           node-version: '16'
           cache: 'npm'
       - run: npm install
-      - name: run push script
-        env:
-          RIOT_KEY: ${{ secret.RIOT_KEY }}
-          DISC_KEY: ${{ secret.DISC_KEY }}
-          GUILD_ID: ${{ secret.GUILD_ID }}
-          CLIENT_ID: ${{ secret.CLIENT_ID }}
-        run: npm run push
