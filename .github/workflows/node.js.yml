@@ -20,10 +20,3 @@ jobs:
           cache: 'npm'
       - run: npm install
       - run: npm run build
-      - name: run push script
-        env:
-          RIOT_KEY: ${{ secrets.RIOT_KEY }}
-          DISC_KEY: ${{ secrets.DISC_KEY }}
-          GUILD_ID: ${{ secrets.GUILD_ID }}
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-        run: npm run push
