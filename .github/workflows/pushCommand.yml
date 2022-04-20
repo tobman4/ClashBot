@@ -1,0 +1,18 @@
+name: push commans
+
+on: workflow_dispatch
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm install
+      - name: run push script
+        env:
+          RIOT_KEY: ${{ secret.RIOT_KEY }}
+          DISC_KEY: ${{ secret.DISC_KEY }}
+          GUILD_ID: ${{ secret.GUILD_ID }}
+          CLIENT_ID: ${{ secret.CLIENT_ID }}
+        run: npm run push
