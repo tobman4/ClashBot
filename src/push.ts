@@ -12,24 +12,35 @@ const guildId = process.env["GUILD_ID"];
 const commands = [];
 const commandFiles = readdirSync('./src/commands').filter(file => file.endsWith('.js'));
 
+console.log(`Found ${commandFiles.length} commands`);
 for (const file of commandFiles) {
-    const { command } : { command: SlashCommandBuilder } = require(`./commands/${file}`);
-    commands.push(command.toJSON());
+
+	try {
+
+		console.log(`Loading Command: ${file}`);
+		const { command } : { command: SlashCommandBuilder } = require(`./commands/${file}`);
+		console.log(`Registering Command: ${command.name}`);
+		commands.push(command.toJSON());
+	} catch(err) {
+		console.error(`Failed to load command: ${file}`);
+	
+		if(process.env["NODE_ENV"] === "development") {
+			console.error(err);
+		} else {
+			throw err;
+		}
+	}
 }
 
 const rest = new REST().setToken(token);
 
 (async () => {
-	try {
-		console.log('Started refreshing application (/) commands.');
+	console.log('Started refreshing application (/) commands.');
 
-		await rest.put(
-			Routes.applicationGuildCommands(clientId, guildId),
-			{ body: commands },
-		);
+	await rest.put(
+		Routes.applicationGuildCommands(clientId, guildId),
+		{ body: commands },
+	);
 
-		console.log('Successfully reloaded application (/) commands.');
-	} catch (error) {
-		console.error(error);
-	}
+	console.log('Successfully reloaded application (/) commands.');
 })();
