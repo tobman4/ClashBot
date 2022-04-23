@@ -9,6 +9,7 @@ const token = process.env["DISC_KEY"];
 const clientId = process.env["CLIENT_ID"];
 const guildId = process.env["GUILD_ID"];
 
+
 if(!token || !clientId || !guildId) throw new Error("Missing environment variables");
 
 const commands = [];
@@ -21,7 +22,7 @@ for (const file of commandFiles) {
 	try {
 
 		console.log(`Loading Command: ${file}`);
-		const { command } : { command: SlashCommandBuilder } = require(`./src/commands/${file}`);
+		const { command } : { command: SlashCommandBuilder } = require(`../src/commands/${file}`);
 		console.log(`Registering Command: ${command.name}`);
 		commands.push(command.toJSON());
 	} catch(err) {
@@ -35,7 +36,7 @@ for (const file of commandFiles) {
 	}
 }
 
-const rest = new REST().setToken(token);
+const rest = new REST().setToken(token || "hi");
 
 (async () => {
 	console.log('Started refreshing application (/) commands.');

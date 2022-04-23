@@ -9,6 +9,7 @@ const baseUrl = "https://euw1.api.riotgames.com";
 
 const tournamentUrl = baseUrl + "/lol/clash/v1/tournaments";
 
+
 export {
     GetTournaments
 };
@@ -16,7 +17,7 @@ export {
 async function GetTournaments(): Promise<Tournament[]> {
     const data = await fetch(tournamentUrl, {
         headers: {
-            "X-Riot-Token": apiKey,
+            "X-Riot-Token": apiKey || "",
             "Accept-Language": "en-US,en;q=0.9" 
         }
     })

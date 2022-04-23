@@ -16,5 +16,5 @@ const command = new SlashCommandBuilder()
 async function exec(event: CommandInteraction<CacheType>) {
     const msg = event.options.getString("text");
 
-    event.reply(msg);
+    event.reply(msg ? msg : "hi");
 }
