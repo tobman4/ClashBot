@@ -2,16 +2,18 @@
   "name": "clashbot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
+  "files": [
+    "build"
+  ],
   "scripts": {
     "start": "node build/index.js",
-    "build": "tsc --outDir build",
-    "push": "ts-node push.ts",
-    "watch": "tsc --outDir build -w",
+    "build": "tsc --outDir build -p src",
+    "push": "ts-node scripts/push.ts",
+    "watch": "tsc --outDir build -p src -w",
     "test": "mocha -r ts-node/register \"tests/**/*.spec.ts\""
   },
-  "author": "",
-  "license": "ISC",
+  "author": "tobman",
   "dependencies": {
     "@discordjs/rest": "^0.4.1",
     "@types/node": "^17.0.25",

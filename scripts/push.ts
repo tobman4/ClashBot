@@ -4,16 +4,14 @@ import { SlashCommandBuilder } from "@discordjs/builders";
 import { readdirSync } from 'fs';
 
 import "dotenv/config";
-import { exit } from 'process';
 
 const token = process.env["DISC_KEY"];
 const clientId = process.env["CLIENT_ID"];
 const guildId = process.env["GUILD_ID"];
 
-console.log(process.execPath);
 
 const commands = [];
-const commandFiles = readdirSync('commands').filter(file => file.endsWith('.ts'));
+const commandFiles = readdirSync('../src/commands').filter(file => file.endsWith('.ts'));
 
 
 console.log(`Found ${commandFiles.length} commands`);
@@ -22,7 +20,7 @@ for (const file of commandFiles) {
 	try {
 
 		console.log(`Loading Command: ${file}`);
-		const { command } : { command: SlashCommandBuilder } = require(`./commands/${file}`);
+		const { command } : { command: SlashCommandBuilder } = require(`../src/commands/${file}`);
 		console.log(`Registering Command: ${command.name}`);
 		commands.push(command.toJSON());
 	} catch(err) {
