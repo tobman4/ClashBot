@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node build/index.js",
-    "build": "tsc --outDir build -p src",
-    "push": "ts-node src/push.ts",
-    "watch": "tsc --outDir build -p src -w",
+    "build": "tsc --outDir build",
+    "push": "ts-node push.ts",
+    "watch": "tsc --outDir build -w",
     "test": "mocha -r ts-node/register \"tests/**/*.spec.ts\""
   },
   "author": "",
