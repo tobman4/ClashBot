@@ -1,7 +1,7 @@
 FROM node:18 as builder
 
 WORKDIR /build
-COPY package*.json .
+COPY package*.json ./
 
 RUN npm install
 COPY src src
@@ -13,7 +13,7 @@ FROM node:18 as runner
 WORKDIR /app
 ENV NODE_ENV production
 
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
 
 COPY --from=builder /build/build build
