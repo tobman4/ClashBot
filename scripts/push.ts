@@ -9,6 +9,7 @@ const token = process.env["DISC_KEY"];
 const clientId = process.env["CLIENT_ID"];
 const guildId = process.env["GUILD_ID"];
 
+if(!token || !clientId || !guildId) throw new Error("Missing environment variables");
 
 const commands = [];
 const commandFiles = readdirSync('../src/commands').filter(file => file.endsWith('.ts'));
