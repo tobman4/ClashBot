@@ -5,6 +5,7 @@ import "dotenv/config";
 
 import { GetTournaments } from './Riot/api';
 
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 const commands = {};
 
@@ -21,8 +22,7 @@ client.on('interactionCreate', event => {
 });
 
 //Load commands
-
-const files = readdirSync("./src/commands").filter(f => f.endsWith(".js"));
+const files = readdirSync(__dirname + "/commands").filter(f => f.endsWith(".js"));
 files.forEach(file => {
     const { command, exec } = require(`./commands/${file}`);
     commands[command.name] = exec;
