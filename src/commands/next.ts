@@ -42,7 +42,7 @@ async function exec(event: CommandInteraction) {
             msg += line + "\n";
 
         }
-        await event.followUp(msg);
+        await event.reply(msg);
 
     } catch(err) {
         console.error(err);
